@@ -97,7 +97,7 @@ with conn:
         print(user)
 conn.close()
 conn.commit()
-#3.	Создать миграцию через alembic, настроив файлы ini и .env
+
 
 
 
