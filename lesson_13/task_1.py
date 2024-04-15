@@ -2,7 +2,7 @@ import sqlite3
 
 import db
 from django.core.checks import database
-conn = sqlite3.connect('example.db')
+conn = sqlite3.connect('tutorial.db')
 cursor = conn.cursor()
 with sqlite3.connect(db / database.db) as db:
     cursor = db.cursor()
