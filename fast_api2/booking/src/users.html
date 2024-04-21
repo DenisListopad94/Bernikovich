@@ -1,0 +1,82 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/pip5./css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <title>Users</title>
+</head>
+<body>
+ <div class="container">
+        <h1 class="mt-5 mb-4">Профили пользователей</h1>
+        <table class="table">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">Имя</th>
+                    <th scope="col">Возраст</th>
+                    <th scope="col">Фото</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Peter</td>
+                    <td>24</td>
+                    <td><img src="https://avatars.mds.yandex.net/i?id=a115698af2a7a91924b313a2185ddcc334f66c4b-12515184-images-thumbs&n=13" alt="Crowd_of_people"></td>
+                </tr>
+                <!-- Добавьте остальных пользователей здесь -->
+            </tbody>
+        </table>
+    </div>
+  <script crossorigin="anonymous"
+          integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+ <h1>List of Users</h1>
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='users.css') }}">
+     <h2>Users between 16 and 44 years old:</h2>
+ <img src="https://avatars.mds.yandex.net/i?id=a115698af2a7a91924b313a2185ddcc334f66c4b-12515184-images-thumbs&n=13" alt="Crowd_of_people">
+    <table border="1">
+        <tr>
+            <th>ID</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Age</th>
+            <th>Email</th>
+        </tr>
+        {% for user in users %}
+            {% if user.age > 15 and user.age < 45 %}
+                <tr>
+                    <td>{{ user.id }}</td>
+                    <td>{{ user.first_name }}</td>
+                    <td>{{ user.last_name }}</td>
+                    <td>{{ user.age }}</td>
+                    <td>{{ user.email }}</td>
+                </tr>
+            {% endif %}
+        {% endfor %}
+    </table>
+
+    <h2>Users with incorrect names or surnames:</h2>
+    <table border="1">
+        <tr>
+            <th>ID</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Age</th>
+            <th>Email</th>
+        </tr>
+        {% for user in users %}
+            {% if not user.first_name.isalpha() or not user.last_name.isalpha() %}
+                <tr>
+                    <td>{{ user.id }}</td>
+                    <td>{{ user.first_name }}</td>
+                    <td>{{ user.last_name }}</td>
+                    <td>{{ user.age }}</td>
+                    <td>{{ user.email }}</td>
+                </tr>
+            {% endif %}
+        {% endfor %}
+    </table>
+
+</body>
+</html>
